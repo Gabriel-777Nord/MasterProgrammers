@@ -14,7 +14,7 @@ I want to use this template for my feature file
      | "" | "field" | 5 | # Lasse (Åberg), 5 meter
      
  Feature: Register Contestant.
- As a sportsadministrator I want to register 1-40 contestants so I can have a proper olympiad.
+ As a sportsadministrator I want to register 1-40 contestants so I can have a proper competition.
  
  		Scenario Outline: Setup succesfull
  		Given I am a sports administrator
@@ -25,19 +25,22 @@ I want to use this template for my feature file
  		
 		Examples:
 		| numthlon  | number |
-		|	hepathlon |   13	 |
-		| decathlon |   25 	 |
+		|	hepathlon |   1 	 |
+		|	hepathlon |  40 	 |
+		| decathlon |   1 	 |
+		| decathlon |  40 	 |
 		
 		Scenario Outline: Setup less succesfull
  		Given I am a sports administrator
  		And I select <numthlon> 
  		And  I enter <number> of contestants
  		When I press next 
- 		Then it gives error message
+ 		Then it gives "<error message>"
  		
 		Examples:
-		| numthlon  | number |
-		|	hepathlon |    0 	 |
-		| decathlon |  200 	 |
-		| hepathlon |   ""	 |
+		| numthlon  | number | error message		 |
+		|	hepathlon |   0 	 | minst en          |
+		|	hepathlon |  41 	 | max 40 din potatis|
+		| decathlon |   0 	 | minst en          |
+		| decathlon |  41 	 | max 40 din potatis|
 		 		
