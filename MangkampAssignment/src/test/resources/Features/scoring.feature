@@ -12,3 +12,32 @@ I want to use this template for my feature file
      |athlete| sport | result |
      | "" | "track" | 10 | # Lars, 10 sekunder
      | "" | "field" | 5 | # Lasse (Åberg), 5 meter
+     
+ Feature: Register Contestant.
+ As a sportsadministrator I want to register 1-40 contestants so I can have a proper olympiad.
+ 
+ 		Scenario Outline: Setup succesfull
+ 		Given I am a sports administrator
+ 		And I select <numthlon>
+ 		And  I enter <number> of contestants
+ 		When I press next 
+ 		Then it saves whitch <numthlon> and how <number> contestants.
+ 		
+		Examples:
+		| numthlon  | number |
+		|	hepathlon |   13	 |
+		| decathlon |   25 	 |
+		
+		Scenario Outline: Setup less succesfull
+ 		Given I am a sports administrator
+ 		And I select <numthlon> 
+ 		And  I enter <number> of contestants
+ 		When I press next 
+ 		Then it gives error message
+ 		
+		Examples:
+		| numthlon  | number |
+		|	hepathlon |    0 	 |
+		| decathlon |  200 	 |
+		| hepathlon |   ""	 |
+		 		
