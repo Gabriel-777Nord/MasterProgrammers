@@ -13,34 +13,45 @@ I want to use this template for my feature file
      | "" | "track" | 10 | # Lars, 10 sekunder
      | "" | "field" | 5 | # Lasse (Åberg), 5 meter
      
- Feature: Register Contestant.
- As a sportsadministrator I want to register 1-40 contestants so I can have a proper competition.
+ Feature: Initiation. #hur många + vilken kamp
+ As a sportsadministrator I want to choose competition and number of contestants.
  
  		Scenario Outline: Setup succesfull
  		Given I am a sports administrator
- 		And I select <numthlon>
+ 		And I select <competition>
  		And  I enter <number> of contestants
  		When I press next 
- 		Then it saves whitch <numthlon> and how <number> contestants.
+ 		Then it saves whitch <competition> and how <number> contestants.
  		
 		Examples:
-		| numthlon  | number |
-		|	hepathlon |   1 	 |
-		|	hepathlon |  40 	 |
-		| decathlon |   1 	 |
-		| decathlon |  40 	 |
+		| competition | number |
+		|	hepathlon   |   1 	 |
+		|	hepathlon   |  40 	 |
+		| decathlon   |   1 	 |
+		| decathlon   |  40 	 |
 		
 		Scenario Outline: Setup less succesfull
  		Given I am a sports administrator
- 		And I select <numthlon> 
+ 		And I select <competition> 
  		And  I enter <number> of contestants
  		When I press next 
  		Then it gives "<error message>"
  		
 		Examples:
-		| numthlon  | number | error message		 |
-		|	hepathlon |   0 	 | minst en          |
-		|	hepathlon |  41 	 | max 40 din potatis|
-		| decathlon |   0 	 | minst en          |
-		| decathlon |  41 	 | max 40 din potatis|
-		 		
+		| competition | number | error message		 |
+		|	hepathlon   |   0 	 | minst en          |
+		|	hepathlon   |  41 	 | max 40 din potatis|
+		| decathlon   |   0 	 | minst en          |
+		| decathlon   |  41 	 | max 40 din potatis|
+		
+Feature: Register Contestant. #namn/var osv
+As a sportsadministrator I want to register contestant information so I can have a proper competition.
+	
+		Scenario Outline: Succesfull registration
+		Given I am a hurdidurr
+		And osv
+#Gör scenario på samma sätt. 
+ 
+Feature: Overview. #deltagarlista	
+AS a sportadministrator I want to see all contestants information to get an overview over the competition.
+#Gör scenario på samma sätt.
