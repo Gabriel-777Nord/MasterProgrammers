@@ -1,17 +1,11 @@
-Feature: Scoring
-I want to use this template for my feature file
+Feature: Welcome message
+I am a sports administrator and I want to be welcomed.
 
-  Scenario Outline: User story
-    Given I am a sports administrator
-    When I register an <athlete> 
-    And I also register their <sport>
-    And I register their <result>
-    Then I want to see the total score
-
-    Examples: 
-     |athlete| sport | result |
-     | "" | "track" | 10 | # Lars, 10 sekunder
-     | "" | "field" | 5 | # Lasse (Åberg), 5 meter
+  Scenario: Administrator
+  Given I am a sports administrator
+  And <I> want to be welcomed
+  When I click next
+  Then I see it welcoming me
      
  Feature: Initiation. #hur många + vilken kamp
  As a sportsadministrator I want to choose competition and number of contestants.
